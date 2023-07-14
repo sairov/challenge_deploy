@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const uploadFiles = require('../middlewares/uploadFiles');
+const { isLogged } = require('../middlewares/auth');
 
 const controllers = require('../controllers/adminControllers');
+
+router.use(isLogged);
 
 router.get('/', controllers.adminView);
 router.get('/create', controllers.createView);
